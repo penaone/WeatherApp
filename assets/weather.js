@@ -13,7 +13,11 @@ $(document).ready(function(){
                 type: "GET",
                 dataType: "jsonp",
                 success: function(data){
-                console.log(data);
+                var info = display(data);
+
+
+                $("#display").html(info);
+                $("#city").val('');
                 }
 
             });
@@ -22,3 +26,11 @@ $(document).ready(function(){
         }
         });
     });
+    function display(data){
+        return "<h2>Current Conditions for " + data.name + ", " +"</h2>" +
+               "<h3><strong>Temperature</strong>: "+ data.main.temp + "</h3>" +
+               "<h3><strong>Humidity</strong>: "+ data.main.humidity + "</h3>" +
+               "<h3><strong>Wind Speed</strong>: "+ data.wind.speed + "</h3>";
+            //    "<h3><strong>UV Index</strong>: "
+
+    }

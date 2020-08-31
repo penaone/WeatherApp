@@ -17,10 +17,11 @@
     
             }
 .row.current-weather {
-    text-align: center;
-    background-color: orange;
+    text-align: left;
+    
     
 }
+
 
 .row.forcast{
     display: flex;
