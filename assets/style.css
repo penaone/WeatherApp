@@ -23,7 +23,7 @@
 }
 
 
-.row.forcast{
+.row.forecast{
     display: flex;
     flex-direction: column;
 }
