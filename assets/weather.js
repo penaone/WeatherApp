@@ -4,6 +4,9 @@ $(document).ready(function () {
         
 
         var city = $("#city").val();
+        window.localStorage.setItem('input', JSON.stringify(city));
+        window.localStorage.getItem('city');
+
         
 
         if (city != '') {
@@ -13,12 +16,14 @@ $(document).ready(function () {
                 .then(function (res) {
                 return res.json()
                 }) // convert data to JSON
-                .then(function (data) {
+                .then(async function (data) {
                     console.log(data);
                     var lat = data.coord.lat;
                     var lon = data.coord.lon;
-                    secondFetch(lat,lon);
-                    display(data);
+                    var second_data = await secondFetch(lat,lon);
+                    console.log("Second_data")
+                    console.log(second_data)
+                    display(data, second_data);
                     
                     
                     
@@ -31,24 +36,20 @@ $(document).ready(function () {
                 });
 
 
-           function secondFetch(lat,lon){
-               fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=97e4fcc98ad340027b7c5a1171215ffc`)
-                .then(function (res) {
-                return res.json()
-                }) // convert data to JSON
-                .then(function (data) {
-                    console.log(data);
-                   
-                    
-                })
-                .catch(function () {
-                    
+           async function secondFetch(lat,lon){
+               
 
-                });
+               //make a uvi variable.
+               //fetch uvi data from api.
+               //set uvi variable equal to uvi from response
+               //return the uvi
+                var response =  await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=97e4fcc98ad340027b7c5a1171215ffc`)
+                return await response.json();
+                    
+                
             }
 
-            // window.onload = function() {
-           
+                     
 
 
         } else {
@@ -57,7 +58,9 @@ $(document).ready(function () {
     });
 });
 
-function display(data) {
+function display(data, second_data) {
+    console.log("display data")
+    console.log(data)
     var displayEl=document.querySelector("#display");
     var title=document.createElement("h2");
     title.textContent="Current Conditions for " + data.name
@@ -82,7 +85,9 @@ function display(data) {
 
     var uvi =document.createElement("p");
     uvi.setAttribute("class","card-text");
-    uvi.textContent= "UV Index:" + data.uvi
+    uvi.textContent= "UV Index:" + second_data.current.uvi
+    
+    // uviColor();
 
     card.appendChild(title)
     card.appendChild(temp)
@@ -93,10 +98,16 @@ function display(data) {
 
 
 
-    // var newHtml =  "<h2>Current Conditions for " + data.name + ", " + "</h2>" +
-    //     "<h3><strong>Temperature</strong>: " + data.main.temp + "</h3>" +
-    //     "<h3><strong>Humidity</strong>: " + data.main.humidity + "</h3>" +
-    //     "<h3><strong>Wind Speed</strong>: " + data.wind.speed + "</h3>";
-    //"<h3><strong>UV Index</strong>: "+ data.current.uvi + "</h3>";
-    
+//      function uviColor(){
+//         var uviValue =  second_data.current.uvi;
+//      if (uviValue < 3) {
+//          ("uvi.textContent").style.backgroundColor = '#00FFFF';
+//      }
+//      else if (uviValue >=3 && uviValue <8){
+//         ("uvi.textContent").style.backgroundColor = '#FF4500';
+//      }
+//     else if (uviValue >= 8){
+//         ("uvi.textContent").style.backgroundColor = '#FF0000';
+//     }
+// }
 }
