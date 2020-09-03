@@ -47,9 +47,7 @@ $(document).ready(function () {
                 return await response.json();
                     
                 
-            }
-
-                     
+            }                     
 
 
         } else {
@@ -67,25 +65,28 @@ function display(data, second_data) {
     title.setAttribute("class","card-title");
     var card=document.createElement("div")
     card.setAttribute("class","card");
-
+    $(".icon").html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+   
     var temp =document.createElement("p");
     temp.setAttribute("class","card-text");
-    temp.textContent= "Temperature:" + data.main.temp 
+    temp.textContent= "Temperature: " + data.main.temp + " degrees"
     
 
 
     var humidity =document.createElement("p");
     humidity.setAttribute("class","card-text");
-    humidity.textContent= "Humidity:" + data.main.humidity
+    humidity.textContent= "Humidity: " + data.main.humidity + "%"
 
 
     var speed =document.createElement("p");
     speed.setAttribute("class","card-text");
-    speed.textContent= "Wind Speed:" + data.wind.speed
+    speed.textContent= "Wind Speed: " + data.wind.speed + " mph"
 
     var uvi =document.createElement("p");
     uvi.setAttribute("class","card-text");
-    uvi.textContent= "UV Index:" + second_data.current.uvi
+    uvi.textContent= "UV Index: " + second_data.current.uvi
+   
+
     
     // uviColor();
 
@@ -111,3 +112,44 @@ function display(data, second_data) {
 //     }
 // }
 }
+
+function forecast(data, second_data) {
+    var forecastEl=document.querySelector("#forecast");
+    var title=document.createElement("h4")
+    title.textContent="Forecast for" + data.name
+    title.setAttribute("class","card-title");
+    var card=document.createElement("div")
+    card.setAttribute("class","card");
+    $(".icon").html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+  
+   var date =document.createElement("p");
+   date.setAttribute("class","card-text");
+   date.textContent= "Date:" + second_data.daily.dt
+   
+   
+    var temp =document.createElement("p");
+    temp.setAttribute("class","card-text");
+    temp.textContent= "Temperature:" + second_data.daily.temp   
+
+
+    var humidity =document.createElement("p");
+    humidity.setAttribute("class","card-text");
+    humidity.textContent= "Humidity:" + second_data.daily.humidity
+
+    var speed =document.createElement("p");
+    speed.setAttribute("class","card-text");
+    speed.textContent= "Wind Speed:" + second_data.daily.wind.speed
+
+    card.appendChild(date)
+    card.appendChild(title)
+    card.appendChild(temp)
+    card.appendChild(humidity)
+    card.appendChild(speed)
+    forecastEl.appendChild(card)
+}
+
+
+
+
+
+

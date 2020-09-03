@@ -17,13 +17,13 @@
     <header class="jumbotron">
         <h1 class="display-3">Weather Dashboard</h1>
     </header>
-    <div class="container">
+    <aside class="container">
         <div class="row"></div>
         <h3 class="col-6 col-md-4 search-text">Search for a City:</h3>
         <span id="error"></span>
 
         <div class="input-group col-6 col-md-4 pl-0">
-            <input id="city" class="form-control my-0 py-1 lime-border" type="text" placeholder="City Name"
+            <input id="city" class="form-control my-0 py-1 lime-border" type="text" placeholder="City, State Name"
                 aria-label="Search">
             <div class="input-group-append">
                 <span class="input-group-text blue-2" id="search-button"><i class="fas fa-search text-blue"
@@ -31,37 +31,28 @@
             </div>
             <div id="list"></div>
         </div>
-    </div>
+    </aside>
     </div>
     <div class="container main">
+        <div class= icon></div>
+       
         <div class="row current-weather"></div>
         <h4 id="display"></h4>
         
+        
 
-            <!-- <div class="row forecast">
+            <div class="row forecast">
                 
-                    <div class="card col-2">
-                        <img class="card-img-top" src="" alt="Weather Forcast">
-                        <div class="card-body">
-                            <p class="card-text">Forcast</p>
-                        </div>
-                    </div>
-                    <div class="card col-2">
-                        <img class="card-img-top" src="" alt="Weather Forcast">
+                    <div id = "forecast" class="card col-2"></div>
+                        <img class="card-img-top" src="" alt="Weather Forecast">
                         <div class="card-body">
                             <p class="card-text">Forecast</p>
                         </div>
-                    </div>
-                    <div class="card col-2">
-                        <img class="card-img-top" src="" alt="Weather Forcast">
+                    
+                    <!-- <div class="card col-2">
+                        <img class="card-img-top" src="" alt="Weather Forecast">
                         <div class="card-body">
-                            <p class="card-text">Forcast</p>
-                        </div>
-                    </div>
-                    <div class="card col-2">
-                        <img class="card-img-top" src="" alt="Weather Forcast">
-                        <div class="card-body">
-                            <p class="card-text">Forcast</p>
+                            <p class="card-text">Forecast</p>
                         </div>
                     </div>
                     <div class="card col-2">
@@ -69,7 +60,20 @@
                         <div class="card-body">
                             <p class="card-text">Forecast</p>
                         </div>
-                    </div> -->
+                    </div>
+                    <div class="card col-2">
+                        <img class="card-img-top" src="" alt="Weather Forecast">
+                        <div class="card-body">
+                            <p class="card-text">Forecast</p>
+                        </div>
+                    </div>
+                    <div class="card col-2">
+                        <img class="card-img-top" src="" alt="Weather Forecast">
+                        <div class="card-body">
+                            <p class="card-text">Forecast</p>
+                        </div> -->
+                    </div>
+        
                 
 
             </div>
