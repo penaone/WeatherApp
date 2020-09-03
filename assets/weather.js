@@ -118,7 +118,7 @@ function forecast(data, second_data) {
     var forecastListElem= document.querySelector("#listForecast")
     console.log("------>", second_data)
     // loop second_data.daily
-for(i=0;i<second_data.daily.length;i++){
+for(i=0; i<5; i++){
     console.log(second_data.daily[i])
     var forecastEl=document.querySelector("#forecast");
     // var title=document.createElement("h4")
@@ -130,22 +130,27 @@ for(i=0;i<second_data.daily.length;i++){
   
    var date =document.createElement("p");
    date.setAttribute("class","card-text");
-   date.textContent= "Date:" + moment().format("MMM.Do").second_data.daily[i].dt
+   date.textContent= "Forecast " + moment.unix(second_data.daily[i].dt).format("MMM, Do")
+
+   var icon =document.createElement("p");
+    icon.setAttribute("class","card-image-top");
+    icon.img= second_data.daily[i].weather.icon
    
    
     var temp =document.createElement("p");
     temp.setAttribute("class","card-text");
-    temp.textContent= "Temperature:" + second_data.daily[i].temp.day  
+    temp.textContent= "Temp: " + second_data.daily[i].temp.day  
 
 
     var humidity =document.createElement("p");
     humidity.setAttribute("class","card-text");
-    humidity.textContent= "Humidity:" + second_data.daily[i].humidity
+    humidity.textContent= "Humidity: " + second_data.daily[i].humidity
 
     var speed =document.createElement("p");
     speed.setAttribute("class","card-text");
-    speed.textContent= "Wind Speed:" + second_data.daily[i].wind_speed
+    speed.textContent= "Wind: " + second_data.daily[i].wind_speed
 
+    card.appendChild(icon)
     card.appendChild(date)
    // card.appendChild(title)
     card.appendChild(temp)
