@@ -24,6 +24,7 @@ $(document).ready(function () {
                     console.log("Second_data")
                     console.log(second_data)
                     display(data, second_data);
+                    forecast(data,second_data);
                     
                     
                     
@@ -43,7 +44,7 @@ $(document).ready(function () {
                //fetch uvi data from api.
                //set uvi variable equal to uvi from response
                //return the uvi
-                var response =  await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=97e4fcc98ad340027b7c5a1171215ffc`)
+                var response =  await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=97e4fcc98ad340027b7c5a1171215ffc&units=imperial`)
                 return await response.json();
                     
                 
@@ -114,38 +115,46 @@ function display(data, second_data) {
 }
 
 function forecast(data, second_data) {
+    var forecastListElem= document.querySelector("#listForecast")
+    console.log("------>", second_data)
+    // loop second_data.daily
+for(i=0;i<second_data.daily.length;i++){
+    console.log(second_data.daily[i])
     var forecastEl=document.querySelector("#forecast");
-    var title=document.createElement("h4")
-    title.textContent="Forecast for" + data.name
-    title.setAttribute("class","card-title");
+    // var title=document.createElement("h4")
+    // title.textContent="Forecast for" + second_data.daily[i].
+    // title.setAttribute("class","card-title");
     var card=document.createElement("div")
     card.setAttribute("class","card");
-    $(".icon").html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+    $(".icon").html("<img src='http://openweathermap.org/img/w/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
   
    var date =document.createElement("p");
    date.setAttribute("class","card-text");
-   date.textContent= "Date:" + second_data.daily.dt
+   date.textContent= "Date:" + moment().format("MMM.Do").second_data.daily[i].dt
    
    
     var temp =document.createElement("p");
     temp.setAttribute("class","card-text");
-    temp.textContent= "Temperature:" + second_data.daily.temp   
+    temp.textContent= "Temperature:" + second_data.daily[i].temp.day  
 
 
     var humidity =document.createElement("p");
     humidity.setAttribute("class","card-text");
-    humidity.textContent= "Humidity:" + second_data.daily.humidity
+    humidity.textContent= "Humidity:" + second_data.daily[i].humidity
 
     var speed =document.createElement("p");
     speed.setAttribute("class","card-text");
-    speed.textContent= "Wind Speed:" + second_data.daily.wind.speed
+    speed.textContent= "Wind Speed:" + second_data.daily[i].wind_speed
 
     card.appendChild(date)
-    card.appendChild(title)
+   // card.appendChild(title)
     card.appendChild(temp)
     card.appendChild(humidity)
     card.appendChild(speed)
-    forecastEl.appendChild(card)
+    console.log(card)
+    forecastListElem.appendChild(card)
+    // end the loop
+}
 }
 
 
