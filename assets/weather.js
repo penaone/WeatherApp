@@ -57,7 +57,7 @@ $(document).ready(function () {
                     
            }          
             }                     
-
+            thatElement.html = document.getElementById(cm);
 
         
     });
@@ -146,7 +146,7 @@ function forecast(second_data) {
 
    var icon =document.createElement("p");
     icon.setAttribute("class","card-image-top");
-    icon.img= second_data.daily[i].weather[0].icon
+    //icon.img= second_data.daily[i].weather[0].icon
    
    
     var temp =document.createElement("p");
@@ -175,6 +175,7 @@ function forecast(second_data) {
 }
 };
 //returnCity();
+
 
 
 
