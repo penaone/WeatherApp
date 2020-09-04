@@ -1,4 +1,9 @@
 $(document).ready(function () {
+//     resetForms();
+// });
+//     function resetForms() {
+//         document.forms['container'].reset();
+    
     
 
     $('#search-button').click(function () {
@@ -45,9 +50,7 @@ $(document).ready(function () {
            async function secondFetch(lat,lon){
                
 
-               //make a uvi variable.
                //fetch uvi data from api.
-               //set uvi variable equal to uvi from response
                //return the uvi
                 var response =  await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=97e4fcc98ad340027b7c5a1171215ffc&units=imperial`)
                 return await response.json();
@@ -59,17 +62,17 @@ $(document).ready(function () {
         
     });
 });
-var returnCity = function() {
-    city = JSON.parse(localStorage.getItem[city]);
-}
+// var returnCity = function() {
+//     city = JSON.parse(localStorage.getItem[city]);
+// }
 
-var saveCity = function(){
-    localStorage.setItem('input', JSON.stringify[city]);
-    }
+// var saveCity = function(){
+//     localStorage.setItem('input', JSON.stringify[city]);
+//     }
     
 function display(data, second_data) {
-    console.log("display data")
-    console.log(data)
+    // console.log("display data")
+    // console.log(data)
     var displayEl=document.querySelector("#display");
     var title=document.createElement("h2");
     title.textContent="Current Conditions for " + data.name
@@ -94,7 +97,7 @@ function display(data, second_data) {
     speed.textContent= "Wind Speed: " + data.wind.speed + " mph"
 
     var uvi =document.createElement("p");
-    uvi.setAttribute("class","card-text4");
+    uvi.setAttribute("class","card-textuv");
     uvi.textContent= "UV Index: " + second_data.current.uvi
    
 
@@ -107,20 +110,20 @@ function display(data, second_data) {
     card.appendChild(uvi)
     displayEl.appendChild(card)
     uviColor();
-    saveCity();
+    //saveCity();
     
     function uviColor(){console.log("dddd")
         var uviValue =  second_data.current.uvi;
      if (uviValue < 3) {
-        document.querySelector(".card-text4").style.color="cyan"; 
+        document.querySelector(".card-textuv").style.color="cyan"; 
          
      }
      else if (uviValue >= 8){console.log(uvi)
-      document.querySelector(".card-text4").style.color="red";
+      document.querySelector(".card-textuv").style.color="red";
     } 
     else {
-    //if (uviValue>=3 || uviValue<8){console.log('time')
-    document.querySelector(".card-text4").style.color="goldenrod";
+    
+    document.querySelector(".card-textuv").style.color="goldenrod";
   }
 }
 }
@@ -129,13 +132,13 @@ function forecast(second_data) {
     var forecastListElem= document.querySelector("#listForecast")
     console.log("------>", second_data)
     // loop second_data.daily
-for(i=0; i<5; i++){
+    for(i=0; i<5; i++){
     //console.log(second_data.daily[i])
-    var forecastEl=document.querySelector("#forecast");
+    //var forecastEl=document.querySelector("#forecast");
     
     var card=document.createElement("div")
     card.setAttribute("class","card");
-    $(".icon[i]").html("<img src='http://openweathermap.org/img/w/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+    $(".iconf[i]").html("<img src='http://openweathermap.org/img/w/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
   
    var date =document.createElement("p");
    date.setAttribute("class","card-text");
@@ -171,7 +174,7 @@ for(i=0; i<5; i++){
     // end the loop
 }
 };
-returnCity();
+//returnCity();
 
 
 
