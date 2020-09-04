@@ -26,6 +26,7 @@ $(document).ready(function () {
                     display(data, second_data);
                     forecast(second_data);
                     
+
                     
                     
 
@@ -89,14 +90,14 @@ function display(data, second_data) {
    
 
     
-    uviColor();
-
+  
     card.appendChild(title)
     card.appendChild(temp)
     card.appendChild(humidity)
     card.appendChild(speed)
     card.appendChild(uvi)
     displayEl.appendChild(card)
+    uviColor();
 
      function uviColor(){
         var uviValue =  second_data.current.uvi;
@@ -153,6 +154,8 @@ for(i=0; i<5; i++){
     card.appendChild(speed)
     console.log(card)
     forecastListElem.appendChild(card)
+
+    
     // end the loop
 }
 }
