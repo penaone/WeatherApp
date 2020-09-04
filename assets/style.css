@@ -48,6 +48,10 @@ body {
     flex-wrap: wrap;
 }
 
+#listForecast {
+    justify-content: space-between;
+}
+
 
 
 #search-button{

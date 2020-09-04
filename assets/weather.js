@@ -1,17 +1,21 @@
 $(document).ready(function () {
+    
 
     $('#search-button').click(function () {
         
 
         var city = $("#city").val();
-        window.localStorage.setItem('input', JSON.stringify(city));
-        window.localStorage.getItem('city');
+       
 
         
 
-        if (city != '') {
-            //    function weatherinfo(city) {
-            //    var key = '97e4fcc98ad340027b7c5a1171215ffc';
+        if (city == '') {
+        
+            $("#error").html("Field cannot be empty")
+
+        } else {
+        
+            
             fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city  + "&appid=97e4fcc98ad340027b7c5a1171215ffc" + "&units=imperial")
                 .then(function (res) {
                 return res.json()
@@ -48,16 +52,21 @@ $(document).ready(function () {
                 var response =  await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=97e4fcc98ad340027b7c5a1171215ffc&units=imperial`)
                 return await response.json();
                     
-                
+           }          
             }                     
 
 
-        } else {
-            $("#error").html("Field cannot be empty")
-        }
+        
     });
 });
+var returnCity = function() {
+    city = JSON.parse(localStorage.getItem[city]);
+}
 
+var saveCity = function(){
+    localStorage.setItem('input', JSON.stringify[city]);
+    }
+    
 function display(data, second_data) {
     console.log("display data")
     console.log(data)
@@ -85,7 +94,7 @@ function display(data, second_data) {
     speed.textContent= "Wind Speed: " + data.wind.speed + " mph"
 
     var uvi =document.createElement("p");
-    uvi.setAttribute("class","card-text");
+    uvi.setAttribute("class","card-text4");
     uvi.textContent= "UV Index: " + second_data.current.uvi
    
 
@@ -98,18 +107,21 @@ function display(data, second_data) {
     card.appendChild(uvi)
     displayEl.appendChild(card)
     uviColor();
-
-     function uviColor(){
+    saveCity();
+    
+    function uviColor(){console.log("dddd")
         var uviValue =  second_data.current.uvi;
      if (uviValue < 3) {
-         uvi.textContent.style.background-color; '#00FFFF';
+        document.querySelector(".card-text4").style.color="cyan"; 
+         
      }
-     else if (uviValue >=3 && uviValue <8){
-        uvi.textContent.style.background-color; '#FF4500';
-     }
-    else if (uviValue >= 8){
-        uvi.textContent.style.background-color; '#FF0000';
-    }
+     else if (uviValue >= 8){console.log(uvi)
+      document.querySelector(".card-text4").style.color="red";
+    } 
+    else {
+    //if (uviValue>=3 || uviValue<8){console.log('time')
+    document.querySelector(".card-text4").style.color="goldenrod";
+  }
 }
 }
 
@@ -158,8 +170,8 @@ for(i=0; i<5; i++){
     
     // end the loop
 }
-}
-
+};
+returnCity();
 
 
 
