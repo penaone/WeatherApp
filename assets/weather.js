@@ -24,7 +24,7 @@ $(document).ready(function () {
                     console.log("Second_data")
                     console.log(second_data)
                     display(data, second_data);
-                    forecast(data,second_data);
+                    forecast(second_data);
                     
                     
                     
@@ -89,7 +89,7 @@ function display(data, second_data) {
    
 
     
-    // uviColor();
+    uviColor();
 
     card.appendChild(title)
     card.appendChild(temp)
@@ -98,35 +98,31 @@ function display(data, second_data) {
     card.appendChild(uvi)
     displayEl.appendChild(card)
 
-
-
-//      function uviColor(){
-//         var uviValue =  second_data.current.uvi;
-//      if (uviValue < 3) {
-//          ("uvi.textContent").style.backgroundColor = '#00FFFF';
-//      }
-//      else if (uviValue >=3 && uviValue <8){
-//         ("uvi.textContent").style.backgroundColor = '#FF4500';
-//      }
-//     else if (uviValue >= 8){
-//         ("uvi.textContent").style.backgroundColor = '#FF0000';
-//     }
-// }
+     function uviColor(){
+        var uviValue =  second_data.current.uvi;
+     if (uviValue < 3) {
+         uvi.textContent.style.background-color; '#00FFFF';
+     }
+     else if (uviValue >=3 && uviValue <8){
+        uvi.textContent.style.background-color; '#FF4500';
+     }
+    else if (uviValue >= 8){
+        uvi.textContent.style.background-color; '#FF0000';
+    }
+}
 }
 
-function forecast(data, second_data) {
+function forecast(second_data) {
     var forecastListElem= document.querySelector("#listForecast")
     console.log("------>", second_data)
     // loop second_data.daily
 for(i=0; i<5; i++){
-    console.log(second_data.daily[i])
+    //console.log(second_data.daily[i])
     var forecastEl=document.querySelector("#forecast");
-    // var title=document.createElement("h4")
-    // title.textContent="Forecast for" + second_data.daily[i].
-    // title.setAttribute("class","card-title");
+    
     var card=document.createElement("div")
     card.setAttribute("class","card");
-    $(".icon").html("<img src='http://openweathermap.org/img/w/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+    $(".icon[i]").html("<img src='http://openweathermap.org/img/w/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
   
    var date =document.createElement("p");
    date.setAttribute("class","card-text");
@@ -134,7 +130,7 @@ for(i=0; i<5; i++){
 
    var icon =document.createElement("p");
     icon.setAttribute("class","card-image-top");
-    icon.img= second_data.daily[i].weather.icon
+    icon.img= second_data.daily[i].weather[0].icon
    
    
     var temp =document.createElement("p");
@@ -152,7 +148,6 @@ for(i=0; i<5; i++){
 
     card.appendChild(icon)
     card.appendChild(date)
-   // card.appendChild(title)
     card.appendChild(temp)
     card.appendChild(humidity)
     card.appendChild(speed)
