@@ -1,59 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weatherapp</title>
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
-
 <body>
     <header class="jumbotron">
         <h1 class="display-3">Weather Dashboard</h1>
     </header>
-    <aside class="container">
+    <div class="container">
         <div class="row"></div>
         <h3 class="col-6 col-md-4 search-text">Search for a City:</h3>
         <span id="error"></span>
-
         <div class="input-group col-6 col-md-4 pl-0">
             <input id="city" class="form-control my-0 py-1 lime-border" type="text" placeholder="City, State Name"
                 aria-label="Search">
             <div class="input-group-append">
-                <span class="input-group-text blue-2" id="search-button"><i class="fas fa-search text-blue"
-                        aria-hidden="true"></i></span>
+                <span class="input-group-text blue-2" id="search-button">
+                    <i class="fas fa-search text-blue" aria-hidden="true"></i>
+                </span>
             </div>
             <div id="list"></div>
         </div>
-    </aside>
     </div>
     <div class="container main" id= "cm">
         <div class= icon></div>
-       
         <div class="row current-weather"></div>
         <div id="display"></div>
-        
-        
-
-            <div id="listForecast" class="row forecast">
-                <!-- <div id ="iconf"><img id="wicon" src="" alt="Weather icon"></div> -->
-                
-                      </div>
-        
-                
-
-            </div>
-
-
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-            <script src="./assets/weather.js"></script>
+        <div id="listForecast" class="row forecast"></div>
+    </div>
+    <script src="./assets/weather.js"></script>
 </body>
-
 </html>
