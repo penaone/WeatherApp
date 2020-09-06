@@ -4,16 +4,21 @@ $(document).ready(function () {
     console.log('loaded')
     $('#search-button').click(function () {
         var city = $("#city").val();
+        console.log(city);
 
         
 
         if(localStorage.getItem("city") === null) {
-            city = [];
+            cityarray = [];
         } else {
-            city = JSON.parse(localStorage.getItem('city'));
+            cityarray = JSON.parse(localStorage.getItem('city'));
+        
+        
+        cityarray[city]
+        city.push(cityarray);
+        localStorage.setItem('city', JSON.stringify(cityarray));
+        cityarray = JSON.parse(localStorage.getItem('cityarray'));
         }
-        city.push(city);
-        localStorage.setItem('city', JSON.stringify(city));
     
 
 
@@ -61,8 +66,8 @@ $(document).ready(function () {
     title.textContent = "Current Conditions for " + data.name
     title.setAttribute("class", "card-title");
     var card = document.createElement("div")
-    card.setAttribute("class", "card");
-    $(".icon").html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+    card.setAttribute("class", "card");http://openweathermap.org/img/wn/10d@2x.png
+    $(".icon").html("<img src='http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
     var temp = document.createElement("p");
     temp.setAttribute("class", "card-text");
     temp.textContent = "Temperature: " + data.main.temp + " degrees"
