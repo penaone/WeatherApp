@@ -1,12 +1,22 @@
 $(document).ready(function () {
-    //     resetForms();
-    // });
-    //     function resetForms() {
-    //         document.forms['container'].reset();
+   
     
     console.log('loaded')
     $('#search-button').click(function () {
         var city = $("#city").val();
+
+        
+
+        if(localStorage.getItem("city") === null) {
+            city = [];
+        } else {
+            city = JSON.parse(localStorage.getItem('city'));
+        }
+        city.push(city);
+        localStorage.setItem('city', JSON.stringify(city));
+    
+
+
         if (city != '') {
             
             fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + "&appid=97e4fcc98ad340027b7c5a1171215ffc" + "&units=imperial")
@@ -26,7 +36,7 @@ $(document).ready(function () {
                     
                 })
                 .catch(function (error) {
-                    // console.log(error);
+                    console.log(error);
                 });
             async function secondFetch(lat, lon) {
                 //fetch uvi data from api.
@@ -36,6 +46,8 @@ $(document).ready(function () {
             }
         } else {
             $("#error").html("Field cannot be empty")
+
+
         
         }
     });
