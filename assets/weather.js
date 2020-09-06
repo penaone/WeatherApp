@@ -22,7 +22,7 @@ $(document).ready(function () {
                      console.log(second_data)
                     display(data, second_data);
                     forecast(second_data);
-                    uviColor();
+                    uviColor(second_data);
                     
                 })
                 .catch(function (error) {
@@ -71,7 +71,7 @@ $(document).ready(function () {
     console.log('your card is: ', card)
     $("#display").append(card)    
 }
-    var uviColor = function() {
+    var uviColor = function(second_data) {
     var uviValue = second_data.current.uvi;
     console.log(uviValue)
     if (uviValue < 3) {
