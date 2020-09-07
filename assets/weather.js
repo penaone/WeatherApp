@@ -18,12 +18,22 @@ $(document).ready(function () {
        // }
          else {
             cityarray = JSON.parse(localStorage.getItem('city'));
+
+            cityarray.push(city)
+        var history = "";
+        if (localStorage.getItem("history") !=="") {
+            var history = localStorage.getItem("history");
+         }
+         if (history !== "") {
+             $("#lastResults").html(
+                 "<b>Last Results:</b>" +
+                 "<ul data-role=\"listview\" data-inset=\" >" +
+                    "<li><a href=\"#test\"> " + document.write(history) + " </a></li>" +
+                    "</ul>"
+             )
+         }
         
         
-        cityarray(city)
-        //city.push(cityarray);
-        //localStorage.setItem('city', JSON.stringify(cityarray));
-       // cityarray = JSON.parse(localStorage.getItem('cityarray'));
         }
     
 
