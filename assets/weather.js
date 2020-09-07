@@ -20,23 +20,26 @@ $(document).ready(function () {
             cityarray = JSON.parse(localStorage.getItem('city'));
 
             cityarray.push(city)
-        var history = "";
-        if (localStorage.getItem("history") !=="") {
-            var history = localStorage.getItem("history");
-         }
-         if (history !== "") {
-             $("#lastResults").html(
-                 "<b>Last Results:</b>" +
-                 "<ul data-role=\"listview\" data-inset=\" >" +
-                    "<li><a href=\"#test\"> " + document.write(history) + " </a></li>" +
-                    "</ul>"
-             )
-         }
+        // var history = "";
+        // if (localStorage.getItem("history") !=="") {
+        //     var history = localStorage.getItem("history");
+        //  }
+        //  if (history !== "") {
+        //      $("#lastResults").html(
+        //          "<b>Last Results:</b>" +
+        //          "<ul data-role=\"listview\" data-inset=\" >" +
+        //             "<li><a href=\"#test\"> " + document.write(history) + " </a></li>" +
+        //             "</ul>"
+                    
+                    
+        //      )
+        //      localStorage.clear();
+        //  }
         
         
         }
     
-
+        
 
         if (city != '') {
             //fetch data from openweathermap api's.
@@ -67,22 +70,23 @@ $(document).ready(function () {
                 return await response.json();
             }
         } else {
-            $("#error").html("Field cannot be empty")
+            $("#error").html("Field cannot be empty");
 
 
         
         }
     });
 });
+
     function display(data, second_data) {
     console.log("here it is");
     var displayEl = $("#display");
-    console.log('display is:', displayEl)
+    console.log('display is:', displayEl);
     displayEl.empty()
     var title = document.createElement("h2");
     title.textContent = "Current Conditions for " + data.name
     title.setAttribute("class", "card-title");
-    var card = document.createElement("div")
+    var card = document.createElement("div");
     card.setAttribute("class", "card");
     $(".icon").html("<img src='http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
     var temp = document.createElement("p");
