@@ -7,23 +7,30 @@ $(document).ready(function () {
         console.log(city);
 
         
-
+        // Store city name to local storage
         if(localStorage.getItem("city") === null) {
-            cityarray = [];
-        } else {
+               cityarray = [];
+               cityarray.push(city)
+               localStorage.setItem("city", JSON.stringify(cityarray));
+           }
+         //if(localStorage.getItem("city") === null) {
+            //cityarray = [];
+       // }
+         else {
             cityarray = JSON.parse(localStorage.getItem('city'));
         
         
-        cityarray[city]
-        city.push(cityarray);
-        localStorage.setItem('city', JSON.stringify(cityarray));
-        cityarray = JSON.parse(localStorage.getItem('cityarray'));
+        cityarray(city)
+        //city.push(cityarray);
+        //localStorage.setItem('city', JSON.stringify(cityarray));
+       // cityarray = JSON.parse(localStorage.getItem('cityarray'));
         }
     
 
 
         if (city != '') {
-            
+            //fetch data from openweathermap api's.
+            //Call needed functions.
             fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + "&appid=97e4fcc98ad340027b7c5a1171215ffc" + "&units=imperial")
                 .then(function (res) {
                     return res.json()
@@ -66,7 +73,7 @@ $(document).ready(function () {
     title.textContent = "Current Conditions for " + data.name
     title.setAttribute("class", "card-title");
     var card = document.createElement("div")
-    card.setAttribute("class", "card");http://openweathermap.org/img/wn/10d@2x.png
+    card.setAttribute("class", "card");
     $(".icon").html("<img src='http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
     var temp = document.createElement("p");
     temp.setAttribute("class", "card-text");
@@ -107,7 +114,7 @@ $(document).ready(function () {
         console.log('in for loop')
         var card = document.createElement("div")
         card.setAttribute("class", "card");
-        $(".iconf[i]").html("<img src='http://openweathermap.org/img/w/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+        $(".iconf[i]").html("<img src='http://openweathermap.org/img/wn/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
         var date = document.createElement("p");
         date.setAttribute("class", "card-text");
         date.textContent = "Forecast " + moment.unix(second_data.daily[i].dt).format("MMM, Do")
