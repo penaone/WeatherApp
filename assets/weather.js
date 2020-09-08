@@ -20,21 +20,21 @@ $(document).ready(function () {
             cityarray = JSON.parse(localStorage.getItem('city'));
 
             cityarray.push(city)
-        // var history = "";
-        // if (localStorage.getItem("history") !=="") {
-        //     var history = localStorage.getItem("history");
-        //  }
-        //  if (history !== "") {
-        //      $("#lastResults").html(
-        //          "<b>Last Results:</b>" +
-        //          "<ul data-role=\"listview\" data-inset=\" >" +
-        //             "<li><a href=\"#test\"> " + document.write(history) + " </a></li>" +
-        //             "</ul>"
+        var history = "";
+        if (localStorage.getItem("history") !=="") {
+            var history = localStorage.getItem("history");
+         }
+         if (history !== "") {
+             $("#lastResults").html(
+                
+                 "<ul data-role=\"listview\" data-inset=\" >" +
+                   
+                    "</ul>"
                     
                     
-        //      )
-        //      localStorage.clear();
-        //  }
+             )
+              localStorage.clear();
+         }
         
         
         }
