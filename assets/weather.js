@@ -140,13 +140,12 @@ var forecast = function (second_data) {
         card.setAttribute("class", "card");
         var icon = document.createElement("img")
         icon.setAttribute("src","http://openweathermap.org/img/wn/" + second_data.daily[i].weather[0].icon + ".png")
-        //$(".iconf[i]").html("<img src='http://openweathermap.org/img/wn/" + second_data.daily[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
         var date = document.createElement("p");
         date.setAttribute("class", "card-text");
         date.textContent = "Forecast " + moment.unix(second_data.daily[i].dt).format("MMM, Do")
         var icon = document.createElement("p");
-        icon.setAttribute("class", "card-image-top");
-        icon.img = second_data.daily[i].weather[0].icon
+        //icon.setAttribute("class", "card-image-top");
+        //icon.img = second_data.daily[i].weather[0].icon
         var temp = document.createElement("p");
         temp.setAttribute("class", "card-text");
         temp.textContent = "Temp: " + second_data.daily[i].temp.day
@@ -162,7 +161,6 @@ var forecast = function (second_data) {
         card.appendChild(humidity)
         card.appendChild(speed)
         col.appendChild(card)
-        //row.appendChild(col)
         $("#listForecast").append(col)
         
     }
